@@ -15,7 +15,17 @@ public class folderController {
     private folderService folderService;
 
     @RequestMapping(value="/createFolder", method=RequestMethod.POST)
-    public creditFolder createFolder(@RequestBody creditFolder c) {
-    	return folderService.create(c);
+    public creditFolder createFolder(@RequestBody CreditFolderRequest c) {
+    	creditFolder cf = new creditFolder();
+        cf.setClientCin(c.getIdClient());
+        cf.setDuree(c.getDuree());
+        cf.setIdBarem(c.getIdBarem());
+        cf.setMontant(c.getMontant());
+        cf.setTaux(c.getTaux());
+        double ineret = cf.getMontant()*cf.getTaux();
+        cf.setInteret(ineret);
+        double mensualite = (cf.getMontant()*cf.getInteret())/cf.getDuree();
+        cf.setMensualite(mensualite);
+        return folderService.create(cf);
     }
 }

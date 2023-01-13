@@ -14,8 +14,21 @@ public class creditFolder {
     private Long id;
     private Long idBarem;
 	private String clientCin;
-	private double montant, interet,mensualite;
+	private double montant, interet,mensualite,taux;
 	private int duree;
+
+	public creditFolder() {
+	}
+	public creditFolder(Long id, Long idBarem, String clientCin, double montant, double interet, double mensualite, double taux, int duree) {
+		this.id = id;
+		this.idBarem = idBarem;
+		this.clientCin = clientCin;
+		this.montant = montant;
+		this.interet = interet;
+		this.mensualite = mensualite;
+		this.taux = taux;
+		this.duree = duree;
+	}
 	public Long getId() {
 		return id;
 	}
@@ -58,7 +71,15 @@ public class creditFolder {
 	public void setDuree(int duree) {
 		this.duree = duree;
 	}
-	
-	
-	
+
+	public double getTaux() {
+		return taux;
+	}
+
+	public void setTaux(double taux) {
+		this.taux = taux;
+	}
+
+
+
 }

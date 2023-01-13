@@ -1,10 +1,7 @@
 package com.example.demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 @RestController
@@ -19,12 +16,12 @@ public class clientController {
     	return clientService.create(c);
     }
 
-    @RequestMapping(value="/getClientByCin", method=RequestMethod.POST)
-    public Client getClientByCin(@RequestBody String cin) {
+    @RequestMapping(value="/getClientByCin", method=RequestMethod.GET)
+    public Client getClientByCin(@RequestParam String cin) {
     	return clientService.getClientByCin(cin);
     }
-    @RequestMapping(value="/checkExist", method=RequestMethod.POST)
-    public Boolean checkExist(@RequestBody String c) {
+    @RequestMapping(value="/checkExist", method=RequestMethod.GET)
+    public Boolean checkExist(@RequestParam String c) {
     	return clientService.checkExist(c);
     }
 }
