@@ -19,9 +19,9 @@ public class Request {
     private int duree;
 
     @Column(name="client_id")
-    private int client_id;
+    private String client_id;
 
-    public Request(long request_id, double montant, int duree, int client_id) {
+    public Request(long request_id, double montant, int duree, String client_id) {
         this.request_id = request_id;
         this.montant = montant;
         this.duree = duree;
@@ -55,11 +55,11 @@ public class Request {
         this.duree = duree;
     }
 
-    public int getClient_id() {
+    public String getClient_id() {
         return client_id;
     }
 
-    public void setClient_id(int client_id) {
+    public void setClient_id(String client_id) {
         this.client_id = client_id;
     }
 }

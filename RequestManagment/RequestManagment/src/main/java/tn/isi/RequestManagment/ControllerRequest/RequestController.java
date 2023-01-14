@@ -6,6 +6,7 @@ import tn.isi.RequestManagment.ReposityInterface.RequestRepository;
 import tn.isi.RequestManagment.models.Request;
 
 import java.util.List;
+import java.util.Random;
 
 @RestController
 @RequestMapping("/request")
@@ -20,7 +21,15 @@ public class RequestController {
         {
             return requestRepository.findById(request_id).get();
         }
-
+        @GetMapping(value ="/randomRequest" )
+        public Request randomRequest()
+        {
+            Request r = new Request();
+            Random ran = new Random();
+            r.setDuree(ran.nextInt(99));
+            r.setMontant(ran.nextDouble(1000,9999));
+            return r;
+        }
         @PostMapping(value="/")
        public Request createRequest(@RequestBody Request request )
         {

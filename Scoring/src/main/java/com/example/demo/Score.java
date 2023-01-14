@@ -17,7 +17,7 @@ public class Score {
 	private String evaluation="Rouge";
 	
 	public void calculateScore(requestType r) {
-		if(r.bct) {
+		if(!r.bct) {
 			if(r.salaire >= 2000) {
 				this.score+= 20;
 			}else if(r.salaire > 1000 && r.salaire <2000) {

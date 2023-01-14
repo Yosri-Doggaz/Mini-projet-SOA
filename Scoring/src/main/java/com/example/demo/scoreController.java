@@ -15,7 +15,23 @@ public class scoreController {
     private scoreService scoreService;
 
     @RequestMapping(value="/calculScore", method=RequestMethod.POST)
-    public String createFolder(@RequestBody requestType r) {
-    	return scoreService.calculate(r);
+    public ScoringResult calculScore(@RequestBody requestType r) {
+    	return new ScoringResult(scoreService.calculate(r));
     }
 }
+
+ class ScoringResult {
+    private String scoringResult;
+
+     public ScoringResult(String scoringResult) {
+         this.scoringResult = scoringResult;
+     }
+
+     public String getScoringResult() {
+         return scoringResult;
+     }
+
+     public void setScoringResult(String scoringResult) {
+         this.scoringResult = scoringResult;
+     }
+ }

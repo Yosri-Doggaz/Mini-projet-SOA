@@ -24,7 +24,7 @@ public class folderController {
         cf.setTaux(c.getTaux());
         double ineret = cf.getMontant()*cf.getTaux();
         cf.setInteret(ineret);
-        double mensualite = (cf.getMontant()*cf.getInteret())/cf.getDuree();
+        double mensualite = (cf.getMontant()+cf.getInteret())/cf.getDuree();
         cf.setMensualite(mensualite);
         return folderService.create(cf);
     }

@@ -1,5 +1,8 @@
 package tn.isi.BCT.Controller;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import tn.isi.BCT.Repository.BctRepository;
@@ -13,15 +16,19 @@ public class BctController {
 
 
     @GetMapping()
-    public boolean checkClientByCin(@RequestParam String cin)
+    public bctResult checkClientByCin(@RequestParam String cin)
     {
        if (bctRepository.getClientByCin(cin)!=null){
-            return true;
+            return new bctResult(true);
     }
-    return false;
+    return new bctResult(false);
 
 
     }
 }
-
-
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+class bctResult{
+    private boolean bctexist;
+}
